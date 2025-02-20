@@ -1,57 +1,25 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { AuthContext, AuthProvider } from './src/context/AuthContext';
-import WelcomePage from './src/screens/WelcomePage';
-import LoginPage from './src/screens/LoginPage';
-import HomePage from './src/screens/HomePage';
-import TaskMapPage from './src/screens/taskmapPage'; // Import TaskMapPage
+import TaskMapPage from './src/screens/TaskMapPage'; 
+import Share5Screen from './src/screens/Share5Screen';
+import Sakya3In from './src/screens/Sakya3In';
+import TwoAndTwoScreen from './src/screens/TwoAndTwoScreen';
+import SapMission from './src/screens/SapMission'; // Import SapMission screen
 
 const Stack = createStackNavigator();
 
-const AppNavigator = () => {
-  const { isAuthenticated } = useContext(AuthContext);
-
-  return (
-    <Stack.Navigator>
-      {isAuthenticated ? (
-        <>
-          <Stack.Screen
-            name="Home"
-            component={HomePage}
-            options={{ title: 'Home' }}
-          />
-          <Stack.Screen
-            name="TaskMap"
-            component={TaskMapPage}
-            options={{ title: 'Task Map' }}
-          />
-        </>
-      ) : (
-        <>
-          <Stack.Screen
-            name="Welcome"
-            component={WelcomePage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={LoginPage}
-            options={{ title: 'Login' }}
-          />
-        </>
-      )}
-    </Stack.Navigator>
-  );
-};
-
 const App = () => {
   return (
-    <AuthProvider>
-      <NavigationContainer>
-        <AppNavigator />
-      </NavigationContainer>
-    </AuthProvider>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="TaskMap">
+        <Stack.Screen name="TaskMap" component={TaskMapPage} options={{ title: 'Task Map' }} />
+        <Stack.Screen name="Share5" component={Share5Screen} options={{ title: 'SHARE 5' }} />
+        <Stack.Screen name="Sakya3In" component={Sakya3In} options={{ title: '3 IN SAKYA' }} />
+        <Stack.Screen name="TwoAndTwo" component={TwoAndTwoScreen} options={{ title: '2 & 2' }} />
+        <Stack.Screen name="SapMission" component={SapMission} options={{ title: 'SAP MISSION' }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
