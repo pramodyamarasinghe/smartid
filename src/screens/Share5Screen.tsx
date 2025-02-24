@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Animated, ScrollView } from 'react-native';
 import LottieView from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,7 +19,7 @@ const Share5Screen = () => {
     }, []);
 
     return (
-        <LinearGradient colors={['#4A00E0', '#8E2DE2']} style={styles.gradient}>
+        <LinearGradient colors={['#FFA500', '#FFFFFF']} style={styles.gradient}>
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     {/* Animation at the top */}
@@ -32,21 +32,24 @@ const Share5Screen = () => {
                         />
                     </View>
 
-                    {/* Welcome text below animation */}
-                    <Text style={styles.text}>Welcome !!! to Task Number 1</Text>
+                    {/* Welcome text */}
+                    <Text style={styles.text}>Welcome to Task Number 1</Text>
+                    <Text style={styles.subText}>
+                        <Text style={{ fontWeight: 'bold' }}>Share the app with 5 friends and earn rewards!</Text>
+                    </Text>
 
                     {/* Task Details */}
                     <View style={styles.taskContainer}>
                         <View style={styles.taskRow}>
-                            <Text style={styles.taskTitle}>Task :</Text>
+                            <Text style={styles.taskTitle}>Task:</Text>
                             <Text style={styles.taskText}>Share app with 5 friends.</Text>
                         </View>
                         <View style={styles.taskRow}>
-                            <Text style={styles.taskTitle}>How to do :</Text>
+                            <Text style={styles.taskTitle}>How to do:</Text>
                             <Text style={styles.taskText}>Share your referral code with your friends.</Text>
                         </View>
                         <View style={styles.taskRow}>
-                            <Text style={styles.taskTitle}>Rules :</Text>
+                            <Text style={styles.taskTitle}>Rules:</Text>
                             <Text style={styles.taskText}>The referral code must be entered when your friends log in.</Text>
                         </View>
                     </View>
@@ -57,8 +60,12 @@ const Share5Screen = () => {
                         <View style={styles.codeBox}>
                             <Animated.Text style={[styles.referralCode, { opacity: blinkAnim }]}>{referralCode}</Animated.Text>
                         </View>
-                        <TouchableOpacity style={styles.shareButton}>
-                            <Text style={styles.shareButtonText}>Share Code</Text>
+
+                        {/* Share Code Button */}
+                        <TouchableOpacity style={styles.shareButtonWrapper}>
+                            <LinearGradient colors={['#FFA500', '#FFA200']} style={styles.shareButton}>
+                                <Text style={styles.shareButtonText}>Share Code</Text>
+                            </LinearGradient>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -74,106 +81,110 @@ const styles = StyleSheet.create({
     scrollContainer: {
         flexGrow: 1,
         alignItems: 'center',
-        paddingBottom: 30, // Prevents content from cutting off at the bottom
+        paddingBottom: 30,
     },
     container: {
         alignItems: 'center',
         paddingTop: 20,
+        width: '90%',
     },
     animationContainer: {
-        width: width * 0.9,
+        width: width * 0.7,
         height: height * 0.3,
         justifyContent: 'center',
         alignItems: 'center',
     },
     animation: {
-        width: width * 0.8,
+        width: width * 0.6,
         height: height * 0.3,
     },
     text: {
-        fontSize: 24,
+        fontSize: 26,
         fontWeight: 'bold',
-        color: '#FFD700',
+        color: '#000000',
         marginTop: 10,
         textAlign: 'center',
+    },
+    subText: {
+        fontSize: 16,
+        color: '#000000',
+        textAlign: 'center',
+        marginBottom: 10,
     },
     taskContainer: {
         marginTop: 25,
         paddingVertical: 20,
-        width: '95%',
-        backgroundColor: 'rgba(255, 255, 255, 0.15)',
-        borderRadius: 10,
+        width: '100%',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 15,
         paddingHorizontal: 15,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.12,
-        shadowRadius: 5,
-        elevation: 4,
+        borderWidth: 1,
+        borderColor: '#FFA500',
     },
     taskRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingVertical: 10,
         borderBottomWidth: 1,
-        borderBottomColor: 'rgba(255, 255, 255, 0.3)',
+        borderBottomColor: '#FFA500',
     },
     taskTitle: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#FFD700',
+        color: '#FFA500',
         width: '35%',
         textAlign: 'left',
     },
     taskText: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#fff',
+        color: '#000000',
         width: '65%',
         textAlign: 'left',
     },
     referralContainer: {
         marginTop: 30,
         padding: 20,
-        backgroundColor: 'rgba(255, 255, 255, 0.15)',
-        borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.12,
-        shadowRadius: 5,
-        elevation: 4,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 15,
+        borderWidth: 1,
+        borderColor: '#FFA500',
         alignItems: 'center',
-        width: '90%',
+        width: '100%',
     },
     referralTitle: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#FFD700',
+        color: '#FFA500',
     },
     codeBox: {
         marginTop: 10,
         paddingVertical: 10,
         paddingHorizontal: 20,
-        backgroundColor: 'rgba(255, 255, 255, 0.3)',
+        backgroundColor: '#FFFFFF',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#FFD700',
+        borderColor: '#FFA500',
     },
     referralCode: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#FFD700',
+        color: '#FFA500',
+    },
+    shareButtonWrapper: {
+        width: '100%',
+        marginTop: 10,
+        borderRadius: 10,
+        overflow: 'hidden',
     },
     shareButton: {
-        marginTop: 15,
-        backgroundColor: '#FFD700',
-        paddingVertical: 12,
-        paddingHorizontal: 25,
-        borderRadius: 8,
+        paddingVertical: 14,
+        alignItems: 'center',
     },
     shareButtonText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#000',
+        color: '#000000',
     },
 });
 

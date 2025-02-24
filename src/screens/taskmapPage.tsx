@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'; 
 import { View, Text, StyleSheet, Animated, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -19,6 +19,7 @@ const TaskMapPage = () => {
         }).start();
     }, []);
 
+    // Handle task button clicks
     const handleTaskPress = (task) => {
         if (task === "SHARE 5") {
             navigation.navigate("Share5");
@@ -28,7 +29,14 @@ const TaskMapPage = () => {
             navigation.navigate("TwoAndTwo");
         } else if (task === "SAP MISSION") {
             navigation.navigate("SapMission");
+        } else if (task === "3D 2M") {
+            navigation.navigate("ThreeDTwoMPage"); // Navigate to new "3D 2M" page
         }
+    };
+
+    // Handle "Collect Your Free Card" button click
+    const handleCollectCard = () => {
+        navigation.navigate("FreeCardPage"); // Navigate to "Free Card" page
     };
 
     return (
@@ -43,22 +51,28 @@ const TaskMapPage = () => {
                             style={styles.animation}
                         />
                     </View>
-                    <Animated.Text style={[styles.text]}>Welcome to Task Map</Animated.Text>
+                    <Animated.Text style={[styles.text, { transform: [{ translateY: slideAnim }] }]}>
+                        Welcome to Task Map
+                    </Animated.Text>
                     <Text style={styles.subText}>
                         <Text style={{ fontWeight: 'bold' }}>Complete Tasks and Get your free Card !!!</Text>
                     </Text>
+
                     <View style={styles.buttonsContainer}>
                         {tasks.map((task, index) => (
-                            <TouchableOpacity key={index} onPress={() => handleTaskPress(task)} style={styles.taskButtonWrapper}>
-                                <LinearGradient 
-                                    colors={['#FFA500', '#FF8C00']} 
-                                    style={styles.taskButton}
-                                >
+                            <TouchableOpacity 
+                                key={index} 
+                                onPress={() => handleTaskPress(task)} 
+                                style={styles.taskButtonWrapper}
+                            >
+                                <LinearGradient colors={['#FFA500', '#FF8C00']} style={styles.taskButton}>
                                     <Text style={styles.taskButtonText}>{task}</Text>
                                 </LinearGradient>
                             </TouchableOpacity>
                         ))}
-                        <TouchableOpacity style={styles.bottomButtonWrapper}>
+
+                        {/* Collect Your Free Card Button */}
+                        <TouchableOpacity style={styles.bottomButtonWrapper} onPress={handleCollectCard}>
                             <LinearGradient colors={['#FF0000', '#B22222']} style={styles.bottomButton}>
                                 <Text style={styles.bottomButtonText}>Collect your free card</Text>
                             </LinearGradient>
@@ -91,6 +105,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    animation: {
+        width: width * 0.6,
+        height: height * 0.2,
+    },
     text: {
         fontSize: 28,
         fontWeight: 'bold',
@@ -103,10 +121,6 @@ const styles = StyleSheet.create({
         color: '#333',
         textAlign: 'center',
         marginBottom: 10,
-    },
-    animation: {
-        width: width * 0.6,
-        height: height * 0.2,
     },
     buttonsContainer: {
         width: '100%',

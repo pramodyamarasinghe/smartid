@@ -30,7 +30,7 @@ const Sakya3In = () => {
     };
 
     return (
-        <LinearGradient colors={['#4A00E0', '#8E2DE2']} style={styles.gradient}>
+        <LinearGradient colors={['#FFA500', '#FFFFFF']} style={styles.gradient}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
                 <View style={styles.container}>
                     <View style={styles.animationContainer}>
@@ -42,7 +42,7 @@ const Sakya3In = () => {
                         />
                     </View>
 
-                    <Text style={styles.text}>Welcome !!! to Task Number 2</Text>
+                    <Text style={styles.text}>Welcome to Task Number 2</Text>
 
                     <View style={styles.taskContainer}>
                         <View style={styles.taskRow}>
@@ -67,7 +67,7 @@ const Sakya3In = () => {
                             />
                         </View>
                         <TouchableOpacity
-                            style={[styles.nextButton, progress === 100 && styles.disabledButton]}
+                            style={[styles.nextButton, progress === 100 && styles.completedButton]}
                             onPress={handleNextStep}
                             activeOpacity={0.8}
                         >
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     },
     scrollContainer: {
         flexGrow: 1,
-        paddingBottom: 30, // Prevent content from being cut off
+        paddingBottom: 30,
     },
     container: {
         flex: 1,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 26,
         fontWeight: 'bold',
-        color: '#fff',
+        color: '#000000',
         marginTop: 10,
         textAlign: 'center',
     },
@@ -116,35 +116,28 @@ const styles = StyleSheet.create({
         marginTop: 15,
         paddingVertical: 18,
         width: '90%',
-        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        backgroundColor: '#FFFFFF',
         borderRadius: 15,
         paddingHorizontal: 15,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.12,
-        shadowRadius: 5,
-        elevation: 4,
     },
     taskRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingVertical: 10,
         borderBottomWidth: 1,
-        borderBottomColor: 'rgba(255, 255, 255, 0.3)',
+        borderBottomColor: '#FFA500',
     },
     taskTitle: {
         fontSize: 19,
         fontWeight: 'bold',
-        color: '#FFD700',
+        color: '#FFA500',
         width: '35%',
-        textAlign: 'left',
     },
     taskText: {
         fontSize: 17,
         fontWeight: 'bold',
-        color: '#fff',
+        color: '#000000',
         width: '65%',
-        textAlign: 'left',
     },
     progressContainer: {
         marginTop: 30,
@@ -154,40 +147,34 @@ const styles = StyleSheet.create({
     progressText: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#FFD700',
+        color: '#FFA500',
         marginBottom: 8,
     },
     progressBar: {
         width: '100%',
         height: 18,
-        backgroundColor: 'rgba(255, 255, 255, 0.3)',
+        backgroundColor: '#FFFFFF',
         borderRadius: 12,
-        overflow: 'hidden',
     },
     progressFill: {
         height: '100%',
-        backgroundColor: '#FFD700',
+        backgroundColor: '#FFA500',
         borderRadius: 12,
     },
     nextButton: {
         marginTop: 15,
-        backgroundColor: '#FFD700',
+        backgroundColor: '#FFA500',
         paddingVertical: 14,
         paddingHorizontal: 30,
         borderRadius: 12,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
-        elevation: 4,
     },
-    disabledButton: {
+    completedButton: {
         backgroundColor: '#32CD32',
     },
     nextButtonText: {
         fontSize: 19,
         fontWeight: 'bold',
-        color: '#000',
+        color: '#000000',
     },
 });
 

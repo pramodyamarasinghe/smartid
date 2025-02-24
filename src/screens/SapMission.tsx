@@ -102,11 +102,11 @@ const SapMission = () => {
 
                     {/* Share Button */}
                     <TouchableOpacity style={styles.shareButton} onPress={shareResults}>
-                        <Text style={styles.shareButtonText}>📢 WoW !! Your BS marks 76</Text>
+                        <Text style={styles.shareButtonText}>🎉  WoW !! Your BS marks 76</Text>
                         <Text style={styles.shareButtonLabel}>Click to Share</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.shareButton} onPress={() => shareResults()}>
-                        <Text style={styles.shareButtonText}>📢 WoW !! Your ECON marks 78</Text>
+                        <Text style={styles.shareButtonText}>WoW !! Your ECON marks 78</Text>
                         <Text style={styles.shareButtonLabel}>Click to Share</Text>
                     </TouchableOpacity>
                 </View>

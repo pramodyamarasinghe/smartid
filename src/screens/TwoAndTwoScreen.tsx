@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';  
 import { View, Text, StyleSheet, Dimensions, Animated, ScrollView } from 'react-native';
 import LottieView from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -38,7 +38,7 @@ const TwoAndTwoScreen = () => {
     };
 
     return (
-        <LinearGradient colors={['#4A00E0', '#8E2DE2']} style={styles.gradient}>
+        <LinearGradient colors={['#FFA500', '#FFFFFF']} style={styles.gradient}>
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     <View style={styles.animationContainer}>
@@ -68,14 +68,14 @@ const styles = StyleSheet.create({
     container: { alignItems: 'center', paddingTop: 20 },
     animationContainer: { width: width * 0.9, height: height * 0.3, justifyContent: 'center', alignItems: 'center' },
     animation: { width: width * 0.8, height: height * 0.3 },
-    title: { fontSize: 28, fontWeight: 'bold', color: '#fff', marginTop: 10, textAlign: 'center', textTransform: 'uppercase' },
-    taskContainer: { marginTop: 25, paddingVertical: 20, width: '90%', backgroundColor: 'rgba(255, 255, 255, 0.15)', borderRadius: 12 },
-    taskRow: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: 'rgba(255, 255, 255, 0.3)' },
-    taskTitle: { fontSize: 18, fontWeight: 'bold', color: '#FFD700', width: '35%' },
-    taskText: { fontSize: 16, fontWeight: 'bold', color: '#fff', width: '65%' },
-    countdownContainer: { marginTop: 20, padding: 20, backgroundColor: 'rgba(255, 255, 255, 0.15)', borderRadius: 15, width: '85%', alignItems: 'center' },
-    countdownText: { fontSize: 20, fontWeight: 'bold', color: '#FFD700', textTransform: 'uppercase' },
-    countdownNumbers: { fontSize: 26, fontWeight: 'bold', color: '#FFD700', marginTop: 5 },
+    title: { fontSize: 28, fontWeight: 'bold', color: '#000000', marginTop: 10, textAlign: 'center', textTransform: 'uppercase' },
+    taskContainer: { marginTop: 25, paddingVertical: 20, width: '90%', backgroundColor: '#FFFFFF', borderRadius: 12 },
+    taskRow: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: '#FFA500' },
+    taskTitle: { fontSize: 18, fontWeight: 'bold', color: '#FFA500', width: '35%' },
+    taskText: { fontSize: 16, fontWeight: 'bold', color: '#000000', width: '65%' },
+    countdownContainer: { marginTop: 20, padding: 20, backgroundColor: '#FFFFFF', borderRadius: 15, width: '85%', alignItems: 'center' },
+    countdownText: { fontSize: 20, fontWeight: 'bold', color: '#FFA500', textTransform: 'uppercase' },
+    countdownNumbers: { fontSize: 26, fontWeight: 'bold', color: '#FFA500', marginTop: 5 },
 });
 
 export default TwoAndTwoScreen;
