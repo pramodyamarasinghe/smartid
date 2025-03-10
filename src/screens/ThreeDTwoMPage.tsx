@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Calendar } from 'react-native-calendars';
+import { themeImages } from '../constants/theme';
+
 
 const { width, height } = Dimensions.get('window');
 
@@ -44,13 +46,13 @@ const highlightSaturdays = () => {
 };
 
     return (
-        <LinearGradient colors={['#FFA500', '#FFFFFF']} style={styles.gradient}>
+        <LinearGradient colors={['#FFECB3', '#FFFFFF']} style={styles.gradient}>
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     {/* Animation at the top */}
                     <View style={styles.animationContainer}>
                         <LottieView
-                            source={require('D:/Dev/SMARTiD-main/src/assets/attendance.json')}
+                            source={themeImages.ThreeDTwoMPageImg}
                             autoPlay
                             loop
                             style={styles.animation}

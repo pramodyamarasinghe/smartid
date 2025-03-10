@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Animated, ScrollView } from 'react-native';
 import LottieView from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { themeImages } from '../constants/theme';
 
 const { width, height } = Dimensions.get('window');
 
@@ -19,13 +20,13 @@ const Share5Screen = () => {
     }, []);
 
     return (
-        <LinearGradient colors={['#FFA500', '#FFFFFF']} style={styles.gradient}>
+        <LinearGradient colors={['#FFECB3', '#FFFFFF']} style={styles.gradient}>
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     {/* Animation at the top */}
                     <View style={styles.animationContainer}>
                         <LottieView
-                            source={require('D:/Dev/SMARTiD-main/src/assets/share 5.json')}
+                            source={themeImages.Share5ScreenImg}
                             autoPlay
                             loop
                             style={styles.animation}
@@ -35,7 +36,7 @@ const Share5Screen = () => {
                     {/* Welcome text */}
                     <Text style={styles.text}>Welcome to Task Number 1</Text>
                     <Text style={styles.subText}>
-                        <Text style={{ fontWeight: 'bold' }}>Share the app with 5 friends and earn rewards!</Text>
+                        <Text style={{ fontWeight: 'bold' }}></Text>
                     </Text>
 
                     {/* Task Details */}

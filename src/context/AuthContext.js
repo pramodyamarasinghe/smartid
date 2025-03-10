@@ -1,25 +1,25 @@
-import React, {createContext, useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, { createContext, useState, useEffect } from 'react'; 
+import { View, Text, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Create the context
-export const AuthContext = createContext();
+// Create Auth Context with default values
+export const AuthContext = createContext({
+  isAuthenticated: false,
+  login: async (token: string) => {},
+  logout: async () => {},
+});
 
 // AuthProvider component
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check for the token when the app loads
+    // Check for stored authentication token on app load
     const checkAuthStatus = async () => {
       try {
         const token = await AsyncStorage.getItem('authToken');
-        if (token) {
-          setIsAuthenticated(true);
-        } else {
-          setIsAuthenticated(false);
-        }
+        setIsAuthenticated(!!token);
       } catch (error) {
         console.error('Failed to fetch the token:', error);
       } finally {
@@ -30,8 +30,8 @@ export const AuthProvider = ({children}) => {
     checkAuthStatus();
   }, []);
 
-  // Login function to save the token
-  const login = async token => {
+  // Login function to store the token
+  const login = async (token: string) => {
     try {
       await AsyncStorage.setItem('authToken', token);
       setIsAuthenticated(true);
@@ -50,13 +50,13 @@ export const AuthProvider = ({children}) => {
     }
   };
 
-  // Loading screen while checking authentication
+  // Show loading screen while checking authentication
   if (loading) {
     return <LoadingScreen />;
   }
 
   return (
-    <AuthContext.Provider value={{isAuthenticated, login, logout}}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -81,3 +81,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
+
+export default AuthProvider;

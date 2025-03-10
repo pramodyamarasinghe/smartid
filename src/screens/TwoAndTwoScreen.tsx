@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Dimensions, Animated, ScrollView } from 'react-native';
 import LottieView from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { themeImages } from '../constants/theme';
 
 const { width, height } = Dimensions.get('window');
 
@@ -38,13 +39,13 @@ const TwoAndTwoScreen = () => {
     };
 
     return (
-        <LinearGradient colors={['#FFA500', '#FFFFFF']} style={styles.gradient}>
+       <LinearGradient colors={['#FFECB3', '#FFFFFF']} style={styles.gradient}>
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     <View style={styles.animationContainer}>
-                        <LottieView source={require('D:/Dev/SMARTiD-main/src/assets/payment animation.json')} autoPlay loop style={styles.animation} />
+                        <LottieView source={themeImages.TwoAndTwoScreenImg} autoPlay loop style={styles.animation} />
                     </View>
-                    <Text style={styles.title}>Welcome !!! to Task 2 & 2</Text>
+                    <Text style={styles.title}>welcome task number 3</Text>
                     <View style={styles.taskContainer}>
                         <View style={styles.taskRow}><Text style={styles.taskTitle}>Task :</Text><Text style={styles.taskText}>Complete Payment before 2nd week.</Text></View>
                         <View style={styles.taskRow}><Text style={styles.taskTitle}>How to do :</Text><Text style={styles.taskText}>Complete the class fees for the three classes you are attending before or during the second week.</Text></View>

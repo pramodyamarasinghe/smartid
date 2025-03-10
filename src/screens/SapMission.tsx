@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Dimensions, ScrollView, FlatList, TouchableOpac
 import LottieView from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Share } from 'react-native';
+import { themeImages } from '../constants/theme';
 
 const { width, height } = Dimensions.get('window');
 
@@ -22,10 +23,10 @@ const bsLeaderboard = [
     { rank: 5, name: 'Sadun Suraweeera', score: 10 },
 ];
 
-const shareResults = async () => {
+const shareResults = async (message) => {
     try {
         await Share.share({
-            message: 'I just completed my SAP exam with an A pass! 🎉 #SAPMission #Success',
+            message,
         });
     } catch (error) {
         console.log('Error sharing:', error);
@@ -34,42 +35,30 @@ const shareResults = async () => {
 
 const SapMission = () => {
     return (
-        <LinearGradient colors={['#4A00E0', '#8E2DE2']} style={styles.gradient}>
+       <LinearGradient colors={['#FFECB3', '#FFFFFF']} style={styles.gradient}>
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     {/* Animation */}
                     <View style={styles.animationContainer}>
-                        <LottieView 
-                            source={require('D:/Dev/SMARTiD-main/src/assets/subjects.json')} 
-                            autoPlay 
-                            loop 
+                        <LottieView
+                            source={themeImages.SapMissionImg}
+                            autoPlay
+                            loop
                             style={styles.animation}
                         />
                     </View>
 
                     {/* Mission Title */}
-                    <Text style={styles.title}>Welcome !!! to Task Number 4</Text>
+                    <Text style={styles.title}>Welcome to Task Number 4</Text>
 
                     {/* Task Details */}
                     <View style={styles.taskContainer}>
-                        <View style={styles.taskRow}>
-                            <Text style={styles.taskTitle}>Task:</Text>
-                            <Text style={styles.taskText}>
-                                You must participate in SAP exams (ECON & BUSINESS STUDY) at least once.
-                            </Text>
-                        </View>
-                        <View style={styles.taskRow}>
-                            <Text style={styles.taskTitle}>How to do:</Text>
-                            <Text style={styles.taskText}>
-                                It is mandatory to participate in the SAP exam conducted by Sakya for both subjects.
-                            </Text>
-                        </View>
-                        <View style={styles.taskRow}>
-                            <Text style={styles.taskTitle}>Rules:</Text>
-                            <Text style={styles.taskText}>
-                                You must get an A pass (above 75 marks) in both subjects to complete the mission.
-                            </Text>
-                        </View>
+                        <Text style={styles.taskTitle}>Task:</Text>
+                        <Text style={styles.taskText}>You must participate in SAP exams (ECON & BUSINESS STUDY) at least once.</Text>
+                        <Text style={styles.taskTitle}>How to do:</Text>
+                        <Text style={styles.taskText}>It is mandatory to participate in the SAP exam conducted by Sakya for both subjects.</Text>
+                        <Text style={styles.taskTitle}>Rules:</Text>
+                        <Text style={styles.taskText}>You must get an A pass (above 75 marks) in both subjects to complete the mission.</Text>
                     </View>
 
                     {/* ECON Leaderboard */}
@@ -100,13 +89,16 @@ const SapMission = () => {
                         )}
                     />
 
-                    {/* Share Button */}
-                    <TouchableOpacity style={styles.shareButton} onPress={shareResults}>
-                        <Text style={styles.shareButtonText}>🎉  WoW !! Your BS marks 76</Text>
+                    {/* Share Buttons */}
+                    <TouchableOpacity style={styles.shareButton} onPress={() => shareResults("🎉 WoW !! Your BS marks 76!")}>
+                        <Text style={styles.shareButtonText}>🎉 WoW !! Your BS marks</Text>
+                        <Text style={styles.markText}>76</Text>
                         <Text style={styles.shareButtonLabel}>Click to Share</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.shareButton} onPress={() => shareResults()}>
-                        <Text style={styles.shareButtonText}>WoW !! Your ECON marks 78</Text>
+
+                    <TouchableOpacity style={styles.shareButton} onPress={() => shareResults("WoW !! Your ECON marks 78!")}>
+                        <Text style={styles.shareButtonText}>WoW !! Your ECON marks</Text>
+                        <Text style={styles.markText}>78</Text>
                         <Text style={styles.shareButtonLabel}>Click to Share</Text>
                     </TouchableOpacity>
                 </View>
@@ -141,7 +133,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 26,
         fontWeight: 'bold',
-        color: '#FFD700',
+        color: '#000',
         marginTop: 15,
         textAlign: 'center',
     },
@@ -149,80 +141,81 @@ const styles = StyleSheet.create({
         marginTop: 25,
         padding: 20,
         width: '90%',
-        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        backgroundColor: 'rgba(255, 255, 255, 0.3)',
         borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.12,
-        shadowRadius: 5,
-        elevation: 4,
-    },
-    taskRow: {
-        marginBottom: 12,
     },
     taskTitle: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#FFD700',
-        marginBottom: 5,
+        color: '#000',
     },
     taskText: {
         fontSize: 16,
-        fontWeight: 'bold',
-        color: '#fff',
+        color: '#000',
         textAlign: 'left',
     },
     leaderboardTitle: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#FFD700',
-        marginTop: 25,
-        marginBottom: 10,
+        color: '#000',
     },
     leaderboardItem: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: width * 0.85,
-        paddingVertical: 10,
-        paddingHorizontal: 15,
-        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        padding: 10,
+        backgroundColor: 'rgba(255, 255, 255, 0.3)',
         borderRadius: 10,
         marginBottom: 8,
     },
     rank: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#FFD700',
+        color: '#000',
         width: '15%',
     },
     name: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#fff',
+        color: '#000',
         width: '60%',
         textAlign: 'left',
     },
     score: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#FFD700',
+        color: '#FF0000', // Red for marks
         width: '25%',
         textAlign: 'right',
     },
     shareButton: {
-        width: width * 0.85,
-        marginTop: 20,
-        paddingVertical: 12,
-        paddingHorizontal: 20,
-        backgroundColor: '#FFD700',
+        backgroundColor: '#FFA500', // Orange
+        paddingVertical: 14,
         borderRadius: 8,
+        marginTop: 20,
+        width: width * 0.85,
         alignItems: 'center',
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.3,
+        shadowRadius: 5,
     },
     shareButtonText: {
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: 'bold',
-        color: '#4A00E0',
+        color: '#000',
+    },
+    markText: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#FF0000', // Red for emphasis
+    },
+    shareButtonLabel: {
+        fontSize: 14,
+        color: '#000',
+        marginTop: 5,
     },
 });
 
-export default SapMission
+export default SapMission;

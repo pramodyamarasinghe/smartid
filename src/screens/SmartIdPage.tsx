@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'rea
 import LinearGradient from 'react-native-linear-gradient';
 import { launchImageLibrary } from 'react-native-image-picker';
 import Barcode from 'react-native-barcode-svg';
+import { themeImages } from '../constants/theme';
 
 const SmartIdPage = () => {
     const [profileImage, setProfileImage] = useState(null);
@@ -16,7 +17,7 @@ const SmartIdPage = () => {
     };
 
     return (
-        <LinearGradient colors={['#FFA500', '#FFFFFF']} style={styles.gradient}>
+        <LinearGradient colors={['#FFECB3', '#FFFFFF']} style={styles.gradient}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
                 <View style={styles.card}>
                     <TouchableOpacity onPress={pickImage} style={styles.profileUploadContainer}>
@@ -33,7 +34,8 @@ const SmartIdPage = () => {
                     <View style={styles.barcodeWrapper}>
                         <View style={styles.barcodeContainer}>
                             <Barcode value="123456789" format="CODE128" />
-                            <Image source={require('D:/Dev/SMARTiD-main/src/assets/logo.png')} style={styles.logo} />
+                            <Image style={styles.logo} source={themeImages.SmartIdPageImg} />
+
                         </View>
                         <View style={styles.orangeLine} />
                     </View>

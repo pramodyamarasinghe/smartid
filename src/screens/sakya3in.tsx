@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Animated, ScrollView } from 'react-native';
 import LottieView from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { themeImages } from '../constants/theme';
 
 const { width, height } = Dimensions.get('window');
 
@@ -30,12 +31,13 @@ const Sakya3In = () => {
     };
 
     return (
-        <LinearGradient colors={['#FFA500', '#FFFFFF']} style={styles.gradient}>
+       <LinearGradient colors={['#FFECB3', '#FFFFFF']} style={styles.gradient}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
                 <View style={styles.container}>
                     <View style={styles.animationContainer}>
                         <LottieView
-                            source={require('D:/Dev/SMARTiD-main/src/assets/3 class.json')}
+                           source={themeImages.Sakya3InImg}
+
                             autoPlay
                             loop
                             style={styles.animation}
