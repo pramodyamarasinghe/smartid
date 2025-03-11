@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 20, // Ensures the button is circular
+        borderRadius: 20, 
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.3,
@@ -105,8 +105,8 @@ const styles = StyleSheet.create({
     },
     menuBar: {
         position: 'absolute',
-        top: 60,
-        right: 20,
+        top: 5,
+        right: 5,
         backgroundColor: '#FF8C00',
         padding: 15,
         borderRadius: 10,
