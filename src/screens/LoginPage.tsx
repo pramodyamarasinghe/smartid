@@ -1,11 +1,17 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';  
 import { View, Text, TextInput, Pressable, StyleSheet, Alert } from 'react-native';
 import LottieView from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { themeImages,colors } from '../constants/theme';
+import { themeImages, colors } from '../constants/theme';
 
 const LoginPage = ({ navigation }) => {
   const [studentId, setStudentId] = useState('');
+
+  // Function to validate Student ID format (Two digits, one uppercase letter, five digits)
+  const validateID = (id) => {
+    const idPattern = /^[0-9]{2}[A-Z][0-9]{5}$/;
+    return idPattern.test(id);
+  };
 
   const handleLogin = () => {
     if (!studentId.trim()) {
@@ -13,15 +19,23 @@ const LoginPage = ({ navigation }) => {
       return;
     }
 
-    // Navigate to OTP Page with student ID
-    navigation.navigate('OtpPage', { studentId });
+    // Convert input to uppercase before validation
+    const formattedId = studentId.toUpperCase();
+
+    if (!validateID(formattedId)) {
+      Alert.alert('Error', 'Invalid Student ID format. Example: 23N00000');
+      return;
+    }
+
+    // Navigate to OTP Page with the formatted Student ID
+    navigation.navigate('OtpPage', { studentId: formattedId });
   };
 
   return (
     <LinearGradient colors={colors.BackgroundColor} style={styles.gradient}>
       <View style={styles.container}>
         <LottieView
-          source= {themeImages.LoginImg}
+          source={themeImages.LoginImg}
           autoPlay
           loop
           style={styles.animation}
@@ -31,9 +45,8 @@ const LoginPage = ({ navigation }) => {
           <TextInput
             style={styles.input}
             placeholder="Enter Student ID"
-            keyboardType="numeric"
             value={studentId}
-            onChangeText={setStudentId}
+            onChangeText={(text) => setStudentId(text.toUpperCase())} // Auto-uppercase input
           />
           <Pressable
             style={({ pressed }) => [
